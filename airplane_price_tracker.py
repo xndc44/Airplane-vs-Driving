@@ -33,7 +33,7 @@ class DrivingFlying:
                 driving_distance = d
             else:
                 driving_distance = ''.join(filter(lambda x: x.isdigit(), d))
-            driving_cost = round(float(driving_distance) / 27.1 * 3.83, 2)
+            driving_cost = round(float(driving_distance) / 25.4 * 3.83, 2)
 
             body = {
                 "sheet1": {
