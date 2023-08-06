@@ -13,7 +13,7 @@ class DrivingFlying:
 
     def record_flights(self):
         # postintoSpreadSheets
-        api_key = 'bDLZJKdE1e-oIfI4QDSuDazMk8hJunBG'
+        api_key = 'API_KEY'
         url = 'https://api.sheety.co/10ff97581bc4b0585d95d7cb79113422/lowestAirplanePriceTracker/sheet1'
 
         print(requests.get(url).status_code)
@@ -50,7 +50,9 @@ class DrivingFlying:
             requests.post(url=url, json=body)
 
     def get_driving_duration(self, origin, destination):
-        apikey = 'AIzaSyBJOG0yFQmYKGsO920FUQWB-q0L45x-YM0'
+        if destination == 'Manchester Airport':
+            destination = 'Manchester-Boston Regional Airport'
+        apikey = 'API_KEY'
         url = f"https://maps.googleapis.com/maps/api/distancematrix/json?origins={origin}&destinations={destination}&units=imperial&key={apikey}"
         r = requests.get(url=url).json()
         estimate = r['rows'][0]['elements'][0]
@@ -61,7 +63,7 @@ class DrivingFlying:
 
     def get_iata_code(self, airport_name):
         url = f'https://api.api-ninjas.com/v1/airports?name={airport_name}'
-        api_key = 'RW9KUH1osshUpMJn9gv0VA==1hS8cfMe8ohcrgL7'
+        api_key = 'API_KEY'
         headers = {
             'X-Api-Key': api_key
         }
@@ -71,7 +73,7 @@ class DrivingFlying:
 
     def get_flight_price(self, origin, destination):
         fly_from, fly_to = self.get_iata_code(origin), self.get_iata_code(destination)
-        apikey = 'bDLZJKdE1e-oIfI4QDSuDazMk8hJunBG'
+        apikey = 'API_KEY'
         url = 'https://api.tequila.kiwi.com/v2/search'
         price_list = []
         headers = {
